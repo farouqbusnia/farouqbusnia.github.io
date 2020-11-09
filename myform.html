@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tugas Jquery Kelas D 052-031  </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <style>
+            .label {float: left; width: 150px; }
+            .infobox {width: 200px; }
+            .error { color: red; padding-left: 10px; }
+            .submit { margin-left: 150px; margin-top: 10px;} 
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <p></p>
+            <div class="card">
+            <div class="card-body"><h3>Validasi Nomor Telepon</h3></div>
+        
+        <form id="signup" method="post" action="">
+            <div><span class="label" style="text-align: center;">No telp </span><input type="text" class="infobox" 
+            name="phone" /><span class="error"> Hanya diisi angka, + dan -</span></div>
+            
+            <script> 
+                $(document).ready(function() { // membuat fungsi dapat dijalankan saat halaman dimuat
+                    $('.error').hide(); // menyembunyikan pesan error di awal
+                    $('.submit').click(function(event){ //saat tombol submit di-klik menjalankan suatu event 
+                        var data=$('.infobox').val(); // mengatur nilai pada infobox sesuai dengan yang diisikan user
+                        if(validate_phoneno(data)) //memulai proses validasi data 
+                        {
+                        $('.error').hide(); //sembunyikan pesan error jika no telpon valid
+                        }
+                        else
+                        {
+                        $('.error').show(); //tampilkan pesan error atau no telpon tidak valid
+                        event.preventDefault(); //mencegah membuka halaman dari suatu link
+                        }
+                       });
+                    });
+                function validate_phoneno(ph) //fungsi untuk memvalidasi data
+                 {
+                    var pattern=new RegExp(/^[0-9-+]+$/); //menentukan domain atau nilai data yang boleh masuk hanya angka 0-9, + dan -
+                    return pattern.test(ph); //mencek apakah data sesuai atau tidak
+                 } 
+            </script>
+
+            <input class="submit btn btn-info" type="submit" value="Submit"> <!--tombol submit-->
+            <p></p>
+            </form> 
+        </div>
+        </div>    
+    </body>
+</html>
